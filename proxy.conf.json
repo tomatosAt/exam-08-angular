@@ -1,0 +1,7 @@
+{
+  "/api-fe": {
+    "target": "http://localhost:8006",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
