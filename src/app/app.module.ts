@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { AddComponent } from './features/exam/add/add.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteComponent } from './features/exam/delete/delete.component';
 @NgModule({
   declarations: [
     AppComponent,
     ExamComponent,
-    AddComponent
+    AddComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
