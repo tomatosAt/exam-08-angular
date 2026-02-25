@@ -1,0 +1,47 @@
+<div class="min-h-screen bg-white-100">
+
+  <!-- Container กลาง -->
+  <div class="max-w-4xl px-6 pt-8 mx-auto">
+
+    <!-- ปุ่มเพิ่มข้อสอบ -->
+    <button
+      (click)="goToAdd()"
+      class="px-4 py-2 mb-6 text-white bg-green-500 rounded hover:bg-green-600">
+      เพิ่มข้อสอบ
+    </button>
+
+    <!-- List คำถาม -->
+    <div *ngFor="let question of sections; let i = index"
+         class="mb-6 bg-white">
+
+      <div class="flex items-center gap-3 mb-4">
+        <h3 class="font-semibold">
+          {{ i + 1 }}. {{ question.title }}
+        </h3>
+
+        <button
+          class="px-3 py-1 text-xs text-white bg-red-500 rounded hover:bg-red-600">
+          ลบ
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <div *ngFor="let option of question.options"
+             class="flex items-center gap-3 mb-2">
+
+          <input
+            type="radio"
+            [name]="'question-' + i"
+            [value]="option.id"
+            [(ngModel)]="question.selectedOptionId"
+            [disabled]="showResult">
+
+          <span>{{ option.text }}</span>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
