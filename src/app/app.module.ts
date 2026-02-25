@@ -6,6 +6,7 @@ import { ExamComponent } from './features/exam/dashboard/exam.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AddComponent } from './features/exam/add/add.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AddComponent } from './features/exam/add/add.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
