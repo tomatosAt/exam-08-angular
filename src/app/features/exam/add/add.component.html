@@ -1,24 +1,54 @@
 <div class="flex items-center justify-center h-screen bg-white-200">
-  <div class="w-full max-w-2xl p-10 bg-white-300 ">
+  <div class="w-full max-w-2xl p-10 bg-white-300">
 
-    <div class="space-y-4">
+     <div class="space-y-4">
+      <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-2">
 
+      <!-- Question -->
       <div class="flex items-center gap-4">
         <label class="w-24 text-right">คำถาม</label>
-        <input type="text" class="flex-1 px-3 py-1 border border-black bg-white-100">
+        <input
+          type="text"
+          formControlName="question"
+          class="flex-1 px-3 py-1 border border-black bg-white-100">
       </div>
 
-      <div class="flex items-center gap-4" *ngFor="let i of [1,2,3,4]">
-        <label class="w-24 text-right">คำตอบ {{ i }}</label>
-        <input type="text" class="flex-1 px-3 py-1 border border-black bg-white-100">
+      <!-- Choices -->
+      <div formArrayName="choices" class="space-y-2">
+
+        <div class="flex items-center gap-4"
+             *ngFor="let choice of choices.controls; let i = index"
+             [formGroupName]="i"
+             (click)="selectCorrect(i)"
+              [ngClass]="{
+         'bg-gray-50': choice.get('is_correct')?.value
+       }">
+
+          <label class="w-24 text-right">คำตอบ {{ i + 1 }}</label>
+          <input
+            type="text"
+            formControlName="choice_text"
+            (click)="$event.stopPropagation()"
+            class="flex-1 px-3 py-1 border border-black bg-white-100">
+        </div>
       </div>
 
+      <!-- Buttons -->
       <div class="flex justify-center gap-4 pt-6">
-        <button class="px-6 py-1 text-white bg-blue-600 rounded">บันทึก</button>
-        <button (click)="backToStart()" class="px-6 py-1 text-white bg-red-600 rounded">ยกเลิก</button>
+        <button type="submit"
+                class="px-6 py-1 text-white bg-blue-600 rounded">
+          บันทึก
+        </button>
+
+        <button type="button"
+                (click)="backToStart()"
+                class="px-6 py-1 text-white bg-red-600 rounded">
+          ยกเลิก
+        </button>
       </div>
 
-    </div>
+    </form>
+     </div>
 
   </div>
 </div>

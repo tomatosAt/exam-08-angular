@@ -35,4 +35,8 @@ private apiUrl = uri('/v1/exams');
   {
     return this.http.get<ApiResponse<Question[]>>(this.apiUrl);
   }
+  // เพิ่มข้อสอบใหม่
+  createExam(payload: any) {
+  return this.http.post(uri('/v1/exams'), payload);
+ }
 }
