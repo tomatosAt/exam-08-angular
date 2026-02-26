@@ -26,16 +26,19 @@
         </button>
       </div>
 
-      <div class="space-y-3">
+    <div class="space-y-3">
         <div *ngFor="let c of e.choices"
-             class="flex items-center gap-3 mb-2">
+            class="flex items-center gap-3 mb-2"
+            [ngClass]="{
+              'text-green-600 font-semibold': e.selectedOptionId === c.id && c.is_correct,
+              'text-red-600 font-semibold': e.selectedOptionId === c.id && !c.is_correct
+            }">
 
           <input
             type="radio"
             [name]="'e-' + i"
             [value]="c.id"
-            [(ngModel)]="e.selectedOptionId"
-            [disabled]="showResult">
+            [(ngModel)]="e.selectedOptionId">
           <span>{{ c.choice_text }}</span>
 
         </div>

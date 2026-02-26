@@ -2,25 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { uri } from '@shared/helper/helper';
-
-interface Choice {
-  id: string;
-  choice_text: string;
-  is_correct: boolean;
-}
-
-interface Question {
-  id: string;
-  number: number;
-  question: string;
-  choices: Choice[];
-}
-
-interface ApiResponse<T> {
-  status: string;
-  data: T;
-  status_code: number;
-}
+import { Question, ApiResponse } from '@model/exam.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +24,4 @@ private apiUrl = uri('/v1/exams');
   deleteExam(id: string) {
     return this.http.delete(uri(`/v1/exams/${id}`));
   }
-  
 }

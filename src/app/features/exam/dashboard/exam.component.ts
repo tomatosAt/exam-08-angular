@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExamService } from '@services/exam.service';
+import { Question, ApiResponse } from '@model/exam.model';
 import Swal from 'sweetalert2';
-interface Option {
-  id: string;
-  text: string;
-  isCorrect: boolean;
-}
 
 @Component({
   selector: 'app-exam',
@@ -15,7 +11,7 @@ interface Option {
 })
 
 export class ExamComponent {
-  exams: any[] = [];
+  exams: Question[] = [];
   showResult = false;
   constructor(
     private router: Router,
@@ -35,7 +31,7 @@ export class ExamComponent {
       }
     });
   }
-  
+
   // click add button
   goToAdd() {
     this.router.navigate(['/exam/add']);
